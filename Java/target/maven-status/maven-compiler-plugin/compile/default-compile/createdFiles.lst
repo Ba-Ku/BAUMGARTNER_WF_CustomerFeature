@@ -1,0 +1,6 @@
+at\technikumwien\CustomerRepository.class
+at\technikumwien\CustomersResource.class
+at\technikumwien\MainApp.class
+at\technikumwien\EmptyResultDataAccessExceptionAdvice.class
+at\technikumwien\Customer.class
+at\technikumwien\DBInitializer.class
