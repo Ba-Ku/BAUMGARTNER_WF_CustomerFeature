@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
     <p>
       customers works!
     </p>
+    <app-customers-input></app-customers-input>
+    <app-customer-list></app-customer-list>
   `,
   styles: [
   ]
