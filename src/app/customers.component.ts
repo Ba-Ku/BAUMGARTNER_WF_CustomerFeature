@@ -1,22 +1,48 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {CustomersService} from "./customers.service";
+import {CustomerListComponent} from "./customer-list.component";
+import {Customer} from "./types";
 
 @Component({
   selector: 'app-customers',
   template: `
-    <p>
-      customers works!
-    </p>
-    <app-customer-list></app-customer-list>
-    <app-customers-input></app-customers-input>
+    <h1>Customer Management!</h1>
+
+    <app-customer-list
+      #customerList
+      (select)="selectCustomer($event)"
+    ></app-customer-list>
+
+    <app-customers-input
+      *ngIf="selectedCustomer"
+      [customer]="selectedCustomer"
+      (confirm)="unselectCustomer(true)"
+      (cancel)="unselectCustomer(false)"
+    ></app-customers-input>
   `,
   styles: []
 })
-export class CustomersComponent implements OnInit {
+export class CustomersComponent {
+  @ViewChild('customerList') customerList!: CustomerListComponent;
+  selectedCustomer?: Customer;
 
-  constructor() {
+  constructor(private customersService: CustomersService) {
   }
 
-  ngOnInit(): void {
+  selectCustomer(id: number): void {
+    if (id) {
+      this.customersService.retrieveCustomer(id)
+        .then(customer => this.selectedCustomer = customer);
+    } else {
+      this.selectedCustomer = new Customer();
+    }
   }
 
+  unselectCustomer(refresh: boolean): void {
+    this.selectedCustomer = undefined;
+
+    if (refresh==true) {
+      this.customerList.refresh();
+    }
+  }
 }

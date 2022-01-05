@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Wed Jan 05 13:55:49 CET 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017e-2a4f-5549-0000054f90c8 
-on database directory memory:C:\DATEN\Text\Studium\Drittes_Semester\Webframeworks\BAUMGARTNER_WF_CustomerFeature\Java\840c6457-18fb-4bfa-a219-864c9e13e28f with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
+Wed Jan 05 17:27:43 CET 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017e-2b11-5368-0000053f6fb8 
+on database directory memory:C:\DATEN\Text\Studium\Drittes_Semester\Webframeworks\BAUMGARTNER_WF_CustomerFeature\Java\581a3314-99a2-4487-ac20-a0508961d8c1 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
 Loaded from file:/C:/Users/kurt_/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=17+35-LTS-2724
@@ -11,3 +11,6 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Wed Jan 05 17:43:19 CET 2022:
+Shutting down instance a816c00e-017e-2b11-5368-0000053f6fb8 on database directory memory:C:\DATEN\Text\Studium\Drittes_Semester\Webframeworks\BAUMGARTNER_WF_CustomerFeature\Java\581a3314-99a2-4487-ac20-a0508961d8c1 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
