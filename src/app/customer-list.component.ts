@@ -25,7 +25,7 @@ import {CustomersService} from "./customers.service";
         <td>{{customer.firstName}}</td>
         <td>{{customer.lastName}}</td>
         <td>{{customer.birthdate}}</td>
-        <td>{{customer.active}}</td>
+        <td [class.active]="customer.active" [class.inactive]="!customer.active">{{customer.active}}</td>
         <td>
           <button (click)="editCustomer(customer)">edit</button>
           <button (click)="deleteCustomer(customer)">delete</button>
@@ -33,6 +33,13 @@ import {CustomersService} from "./customers.service";
       </tr>
       </tbody>
     </table>
+    <div class="container">
+      <label for="search-customer-by-lastname">Search a customer by his lastname: </label>
+      <input id="search-customer-by-lastname" placeholder="please insert name" [(ngModel)]="lastNameFromInput">
+      <button (click)="filterCustomer()">Search</button>
+      <button (click)="refresh(); showErrorMessage=false">Show all customers</button>
+      <span *ngIf="showErrorMessage" class="error">Something happend! Please check your spelling.</span>
+    </div>
   `,
   styles: [`
     th, td {
@@ -41,18 +48,37 @@ import {CustomersService} from "./customers.service";
     }
 
     table {
-      border: 1px solid green;
+      border: 3px solid dodgerblue;
     }
 
     button {
       margin-right: 4px;
       margin-left: 4px;
     }
+
+    .container {
+      margin-top: 5px;
+    }
+
+    .error {
+      color: red;
+      font-style: italic;
+    }
+
+    .active {
+      color: green;
+    }
+
+    .inactive {
+      color: red
+    }
   `]
 })
 export class CustomerListComponent implements OnInit {
   @Output() select = new EventEmitter<number>();
   customerList: Customer[] = [];
+  lastNameFromInput?: string;
+  showErrorMessage: boolean = false;
 
   constructor(private customersService: CustomersService) {
   }
@@ -79,5 +105,28 @@ export class CustomerListComponent implements OnInit {
 
   editCustomer(customer: Customer): void {
     this.select.emit(customer.id);
+  }
+
+  filterCustomer(): void {
+    const filteredCustomer = this.customerList
+      .filter(customer => customer.lastName.toUpperCase().trim() === this.lastNameFromInput?.toUpperCase().trim());
+    const filteredCustomerLastName = filteredCustomer
+      .map(customer => customer.lastName)
+      .join();
+
+    if (this.checkLastNameFromInput(filteredCustomerLastName)) {
+      this.customerList = filteredCustomer;
+      this.showErrorMessage = false;
+    } else {
+      this.showErrorMessage = true;
+    }
+  }
+
+  checkLastNameFromInput(lastNameFromInput: string): boolean {
+    if (lastNameFromInput.toUpperCase().trim() === this.lastNameFromInput?.toUpperCase().trim() && this.lastNameFromInput?.length>0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

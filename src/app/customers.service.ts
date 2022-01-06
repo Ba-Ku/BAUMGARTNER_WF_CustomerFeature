@@ -17,7 +17,7 @@ export class CustomersService {
     return this.httpClient.post(CUSTOMERS_RESOURCE_URL, customer).toPromise();
   }
 
-  retrieveCustomer(id: number): Promise<Customer> {
+  retrieveCustomerById(id: number): Promise<Customer> {
     return this.httpClient.get<Customer>(CUSTOMERS_RESOURCE_URL + '/' + id).toPromise();
   }
 

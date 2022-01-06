@@ -31,7 +31,7 @@ export class CustomersComponent {
 
   selectCustomer(id: number): void {
     if (id) {
-      this.customersService.retrieveCustomer(id)
+      this.customersService.retrieveCustomerById(id)
         .then(customer => this.selectedCustomer = customer);
     } else {
       this.selectedCustomer = new Customer();
