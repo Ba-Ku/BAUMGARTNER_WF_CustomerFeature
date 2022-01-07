@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+.flex-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-container-headline{
+  text-align: center;
+}
+
+.flex-container-item{
+
+}
+
+.picture-vertical-medium{
+  width: 400px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.picture-vertical-large{
+  width: 800px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.centered-item{
+  align-self: center;
+}
