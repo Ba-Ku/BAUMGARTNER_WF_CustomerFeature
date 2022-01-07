@@ -4,7 +4,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-data-protection-declaration',
   template: `
-    <div class="flex-container">
+    <div class="flex-container-vertical">
       <h2 class="flex-container-headline">Data Protection Declaration</h2>
       <h4 class="flex-container-headline">Please read through with care!</h4>
       <div class="flex-container-item">

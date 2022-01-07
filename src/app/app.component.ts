@@ -4,9 +4,9 @@ import {Component} from '@angular/core';
   selector: 'app-root',
   template: `
     <div class="navigationbar-top">
-      <a routerLink="home">Home</a>
-      <a routerLink="customers">Customer Management</a>
-      <a routerLink="dataprotection">Data Protection Declaration</a>
+      <a routerLink="home" routerLinkActive="active-link">Home</a>
+      <a routerLink="customers" routerLinkActive="active-link">Customer Management</a>
+      <a routerLink="dataprotection" routerLinkActive="active-link">Data Protection Declaration</a>
     </div>
 
     <router-outlet></router-outlet>
@@ -28,10 +28,13 @@ import {Component} from '@angular/core';
     }
 
     .navigationbar-top a:hover {
-        background-color: lightskyblue;
-        color: black;
+      background-color: lightskyblue;
+      color: black;
     }
 
+    .active-link {
+      background-color: dodgerblue;
+    }
   `]
 })
 export class AppComponent {

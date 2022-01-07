@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-.flex-container{
+.flex-container-vertical{
   display: flex;
   flex-direction: column;
+}
+
+.flex-container-horizontal{
+  display: flex;
+  flex-direction: row;
 }
 
 .flex-container-headline{
@@ -12,13 +17,13 @@
 
 }
 
-.picture-vertical-medium{
+.picture-horizontal-medium{
   width: 400px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.picture-vertical-large{
+.picture-horizontal-large{
   width: 800px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -26,4 +31,16 @@
 
 .centered-item{
   align-self: center;
+}
+
+.item-on-end{
+  align-self: end;
+}
+
+.space-beteween-item{
+  justify-content: space-between;
+}
+
+.icon{
+  width: 22px;
 }
