@@ -7,18 +7,20 @@ import {CustomerListComponent} from './customer-list.component';
 import {CustomersInputComponent} from './customers-input.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { MandatoryStringInputLengthDirective } from './mandatory-string-input-length.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomersComponent,
     CustomerListComponent,
-    CustomersInputComponent
+    CustomersInputComponent,
+    MandatoryStringInputLengthDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

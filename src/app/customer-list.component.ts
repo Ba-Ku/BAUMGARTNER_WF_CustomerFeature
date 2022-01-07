@@ -35,7 +35,7 @@ import {CustomersService} from "./customers.service";
     </table>
     <div class="container">
       <label for="search-customer-by-lastname">Search a customer by his lastname: </label>
-      <input id="search-customer-by-lastname" placeholder="please insert name" [(ngModel)]="lastNameFromInput">
+      <input id="search-customer-by-lastname" placeholder="please insert name" [(ngModel)]="lastNameFromInput" appMandatoryStringInputLength="3">
       <button (click)="filterCustomer()">Search</button>
       <button (click)="refresh(); showErrorMessage=false">Show all customers</button>
       <span *ngIf="showErrorMessage" class="error">Something happend! Please check your spelling.</span>

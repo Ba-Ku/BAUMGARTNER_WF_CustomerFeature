@@ -15,12 +15,12 @@ import {Customer} from "./types";
 
       <div>
         <label for="firstname">Firstname: </label>
-        <input id="firstname" name="firstname" [(ngModel)]="customer.firstName" required minlength="2">
+        <input id="firstname" name="firstname" type="text" [(ngModel)]="customer.firstName" required minlength="2">
       </div>
 
       <div>
         <label for="lastname">Lastname: </label>
-        <input id="lastname" name="lastname" [(ngModel)]="customer.lastName" required minlength="2">
+        <input id="lastname" name="lastname" type="text" [(ngModel)]="customer.lastName" required minlength="2">
       </div>
 
       <div>
