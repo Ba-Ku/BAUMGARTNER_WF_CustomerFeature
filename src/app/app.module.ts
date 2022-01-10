@@ -7,10 +7,11 @@ import {CustomerListComponent} from './customer-list.component';
 import {CustomersInputComponent} from './customers-input.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { MandatoryStringInputLengthDirective } from './mandatory-string-input-length.directive';
-import { HomeComponent } from './home.component';
-import { DataProtectionDeclarationComponent } from './data-protection-declaration.component';
+import {MandatoryStringInputLengthDirective} from './mandatory-string-input-length.directive';
+import {HomeComponent} from './home.component';
+import {DataProtectionDeclarationComponent} from './data-protection-declaration.component';
 import {RouterModule} from "@angular/router";
+import {TableModule} from "primeng/table";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {RouterModule} from "@angular/router";
     ]),
     FormsModule,
     HttpClientModule,
+    TableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

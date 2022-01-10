@@ -6,41 +6,54 @@ import {CustomersService} from "./customers.service";
   selector: 'app-customer-list',
   template: `
     <h2>A list of our customers</h2>
-    <table>
-      <thead>
-      <tr>
-        <th>Customer ID</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Date of Birth</th>
-        <th>active customer</th>
-        <th>
-          <button (click)="addCustomer()" class="add-customer-button">Add customer</button>
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let customer of customerList">
-        <td>{{customer.id}}</td>
-        <td>{{customer.firstName}}</td>
-        <td>{{customer.lastName}}</td>
-        <td>{{customer.birthdate}}</td>
-        <td [class.active]="customer.active" [class.inactive]="!customer.active">{{customer.active}}</td>
-        <td>
-          <button (click)="editCustomer(customer)" class="edit-and-delete-buttons"><img src="assets/edit-list.png" alt="a icon to edit a customer"
-                                                        class="icon"></button>
-          <button (click)="deleteCustomer(customer)" class="edit-and-delete-buttons"><img src="assets/trash-bin.png" alt="a icon to delete a customer"
-                                                          class="icon"></button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+    <div class="table-container">
+      <p-table [value]="customerList" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="id">Customer ID
+              <p-sortIcon field="id"></p-sortIcon>
+            </th>
+            <th pSortableColumn="firstName">Firstname
+              <p-sortIcon field="firstName"></p-sortIcon>
+            </th>
+            <th pSortableColumn="lastName">Lastname
+              <p-sortIcon field="lastName"></p-sortIcon>
+            </th>
+            <th pSortableColumn="birthdate">Date of Birth
+              <p-sortIcon field="birthdate"></p-sortIcon>
+            </th>
+            <th pSortableColumn="active">active customer
+              <p-sortIcon field="active"></p-sortIcon>
+            </th>
+            <th>
+              <button (click)="addCustomer()" class="add-customer-button rounded-button">Add customer</button>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+          <tr>
+            <td>{{customer.id}}</td>
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.birthdate}}</td>
+            <td [class.active]="customer.active" [class.inactive]="!customer.active">
+              {{customer.active == true ? 'active customer' : 'inactive customer' }}</td>
+            <td>
+              <button (click)="editCustomer(customer)" class="edit-button rounded-button">
+                <img src="assets/edit-list.png" alt="a icon to edit a customer" class="icon"></button>
+              <button (click)="deleteCustomer(customer)" class="delete-button rounded-button">
+                <img src="assets/trash-bin.png" alt="a icon to delete a customer" class="icon"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
     <div class="container">
       <label for="search-customer-by-lastname">Search a customer by his lastname: </label>
       <input id="search-customer-by-lastname" placeholder="please insert name" (keydown.enter)="filterCustomer()"
              [(ngModel)]="lastNameFromInput" appMandatoryStringInputLength="3">
-      <button (click)="filterCustomer()" class="search-button">Search</button>
-      <button (click)="refresh(); showErrorMessage=false" class="show-all-customers-button">Show all customers</button>
+      <button (click)="filterCustomer()" class="search-button rounded-button">Search</button>
+      <button (click)="refresh(); showErrorMessage=false" class="show-all-customers-button rounded-button">Show all customers</button>
       <span *ngIf="showErrorMessage" class="error">Something happend! Please check your spelling.</span>
     </div>
   `,
@@ -48,25 +61,24 @@ import {CustomersService} from "./customers.service";
     th, td {
       border: 1px solid black;
       padding: 5px;
+      text-align: center;
     }
 
-    table {
+    .table-container {
       border: 3px solid dodgerblue;
-      width: 650px;
-    }
-
-    .add-customer-button {
-      margin-right: 4px;
-      margin-left: 4px;
+      width: 800px;
+      padding: 5px;
     }
 
     .container {
       margin-top: 5px;
+      length: 800px;
     }
 
     .error {
       color: red;
       font-style: italic;
+      margin-left: 5px;
     }
 
     .active {
@@ -85,9 +97,19 @@ import {CustomersService} from "./customers.service";
       margin-left: 30px;
     }
 
-    .edit-and-delete-buttons{
+    .add-customer-button {
+      margin-right: 4px;
+      margin-left: 4px;
+      background-color: dodgerblue;
+      color: white;
+    }
+    .edit-button{
+      background-color: limegreen;
+    }
 
-      margin-inline: 8px;
+    .delete-button {
+      margin-left: 24px;
+      background-color: red;
     }
   `]
 })

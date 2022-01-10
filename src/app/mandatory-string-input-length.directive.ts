@@ -4,7 +4,7 @@ import {Directive, HostBinding, HostListener, Input} from '@angular/core';
   selector: '[appMandatoryStringInputLength]'
 })
 export class MandatoryStringInputLengthDirective {
-  @Input('appMandatoryStringInputLength') minLength: number|string = 3;//pipe wegen strenger typisierung
+  @Input('appMandatoryStringInputLength') minLength: number | string = 3;//pipe wegen strenger typisierung
 
   @HostBinding('style.backgroundColor') inputBackground: string = 'white';
 

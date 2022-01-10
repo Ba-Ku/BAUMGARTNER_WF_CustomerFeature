@@ -25,7 +25,7 @@ import {Customer} from "./types";
 
       <div>
         <label for="birthdate">Date of birth: </label>
-        <input id="birthdate" name="birthdate" type="Date" [(ngModel)]="customer.birthdate">
+        <input id="birthdate" name="birthdate" type="Date" [(ngModel)]="customer.birthdate" required>
       </div>
 
       <div>

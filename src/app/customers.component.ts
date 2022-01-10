@@ -41,7 +41,7 @@ export class CustomersComponent {
   unselectCustomer(refresh: boolean): void {
     this.selectedCustomer = undefined;
 
-    if (refresh==true) {
+    if (refresh == true) {
       this.customerList.refresh();
     }
   }

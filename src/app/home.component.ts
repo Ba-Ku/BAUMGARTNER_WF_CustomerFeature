@@ -62,7 +62,7 @@ import {Component} from '@angular/core';
   `,
   styles: []
 })
-export class HomeComponent{
+export class HomeComponent {
   constructor() {
   }
 }

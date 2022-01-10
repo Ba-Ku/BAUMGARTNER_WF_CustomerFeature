@@ -44,3 +44,7 @@
 .icon{
   width: 22px;
 }
+
+.rounded-button{
+  border-radius: 6px;
+}
