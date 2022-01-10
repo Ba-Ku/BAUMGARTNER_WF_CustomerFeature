@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~primeicons/primeicons.css";
+
 .flex-container-vertical{
   display: flex;
   flex-direction: column;
