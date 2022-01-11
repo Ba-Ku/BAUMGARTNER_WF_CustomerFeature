@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Customer} from "./types";
 import {CustomersService} from "./customers.service";
+import {stringify} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-customer-list',
@@ -53,8 +54,10 @@ import {CustomersService} from "./customers.service";
       <input id="search-customer-by-lastname" placeholder="please insert name" (keydown.enter)="filterCustomer()"
              [(ngModel)]="lastNameFromInput" appMandatoryStringInputLength="3">
       <button (click)="filterCustomer()" class="search-button rounded-button">Search</button>
-      <button (click)="refresh(); showErrorMessage=false" class="show-all-customers-button rounded-button">Show all customers</button>
-      <span *ngIf="showErrorMessage" class="error">Something happend! Please check your spelling.</span>
+      <button (click)="refresh(); showErrorMessage=false" class="show-all-customers-button rounded-button">Show all
+        customers
+      </button>
+      <span *ngIf="showErrorMessage" class="error">Something happened! Please check your spelling.</span>
     </div>
   `,
   styles: [`
@@ -103,7 +106,8 @@ import {CustomersService} from "./customers.service";
       background-color: dodgerblue;
       color: white;
     }
-    .edit-button{
+
+    .edit-button {
       background-color: limegreen;
     }
 
@@ -147,14 +151,28 @@ export class CustomerListComponent implements OnInit {
   }
 
   filterCustomer(): void {
-    const filteredCustomer = this.customerList
+    let filteredCustomers = this.customerList
       .filter(customer => customer.lastName.toUpperCase().trim() === this.lastNameFromInput?.toUpperCase().trim());
-    const filteredCustomerLastName = filteredCustomer
-      .map(customer => customer.lastName)
-      .join();
 
-    if (this.checkLastNameFromInput(filteredCustomerLastName)) {
-      this.customerList = filteredCustomer;
+    let filteredCustomersLastnames;
+    if(filteredCustomers.length == 0){
+      this.refresh();
+      filteredCustomers = this.customerList
+        .filter(customer => customer.lastName.toUpperCase().trim() === this.lastNameFromInput?.toUpperCase().trim());
+      filteredCustomersLastnames = filteredCustomers
+        .map(customer => customer.lastName)
+        .join();
+
+    } else if(filteredCustomers.length == 1){
+      filteredCustomersLastnames = filteredCustomers
+        .map(customer => customer.lastName)
+        .join();
+    } else {
+      filteredCustomersLastnames = filteredCustomers[0].lastName;
+    }
+
+    if (this.checkLastNameFromInput(filteredCustomersLastnames)) {
+      this.customerList = filteredCustomers;
       this.showErrorMessage = false;
     } else {
       this.showErrorMessage = true;
